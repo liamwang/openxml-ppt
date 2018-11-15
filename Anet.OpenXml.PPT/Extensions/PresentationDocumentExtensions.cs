@@ -17,7 +17,7 @@ namespace Anet.OpenXml.PPT
         /// </summary>
         /// <param name="pageNumber">页码（从1开始）</param>
         /// <returns></returns>
-        public static SlidePart GetSlideByPageNum(this PresentationDocument document, int pageNumber)
+        public static SlidePart GetSlide(this PresentationDocument document, int pageNumber)
         {
             // 注意：Presentation.SlideIdList 是顺序排列的，
             // 不能使用 ppt.PresentationPart.SlideParts，它是无序的。
@@ -34,6 +34,25 @@ namespace Anet.OpenXml.PPT
             return slidePart as SlidePart;
         }
 
+        public static SlidePart GetSlide(this PresentationDocument document, SlideId slideId)
+        {
+            var slidePart = document.PresentationPart.GetPartById(slideId.RelationshipId);
+            return slidePart as SlidePart;
+        }
+
+        public static SlideId GetSlideId(this PresentationDocument document, SlidePart slidePart)
+        {
+            var rid = document.PresentationPart.GetIdOfPart(slidePart);
+            return document.GetSlideId(rid);
+        }
+
+        public static SlideId GetSlideId(this PresentationDocument document, string relationshipId)
+        {
+            return document.PresentationPart.Presentation
+                .SlideIdList.Cast<SlideId>()
+                .FirstOrDefault(x => x.RelationshipId == relationshipId);
+        }
+
         public static IEnumerable<SlidePart> GetSlidePartsInOrder(this PresentationPart presentationPart)
         {
             var slideIdList = presentationPart.Presentation.SlideIdList;
@@ -44,7 +63,18 @@ namespace Anet.OpenXml.PPT
                 .Cast<SlidePart>();
         }
 
-        public static SlidePart CloneSlide(this PresentationDocument document, SlidePart templatePart, int prePageNum)
+        public static SlidePart CloneSlide(this PresentationDocument document, SlidePart templateSlide, int prePageNum)
+        {
+            var slideIdList = document.PresentationPart.Presentation.SlideIdList;
+
+            var preSlideId = slideIdList.ChildElements
+                .Cast<SlideId>()
+                .ElementAt(prePageNum - 1);
+
+            return document.CloneSlide(templateSlide, preSlideId);
+        }
+
+        public static SlidePart CloneSlide(this PresentationDocument document, SlidePart templatePart, SlideId preSlideId)
         {
             // find the presentationPart: makes the API more fluent
             var presentationPart = templatePart.GetParentParts()
@@ -67,10 +97,6 @@ namespace Anet.OpenXml.PPT
             uint maxSlideId = slideIdList.ChildElements
                 .Cast<SlideId>()
                 .Max(x => x.Id.Value);
-
-            SlideId preSlideId = slideIdList.ChildElements
-                .Cast<SlideId>()
-                .ElementAt(prePageNum - 1);
 
             // Insert the new slide into the slide list after the previous slide.
             var id = maxSlideId + 1;

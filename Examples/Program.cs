@@ -10,7 +10,7 @@ namespace Examples
         {
             using (var ppt = new PPT())
             {
-                var slidePart = ppt.Document.GetSlideByPageNum(1);
+                var slidePart = ppt.Document.GetSlide(1);
 
                 var tableData = new List<string[]> {
                     new string[]{"Head1","Head2"},
