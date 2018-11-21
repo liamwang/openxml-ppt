@@ -152,7 +152,7 @@ namespace Anet.OpenXml.PPT.Charts
         {
             var dataLabels = new C.DataLabels();
 
-            dataLabels.Append(new C.NumberingFormat() { FormatCode = "#,##0_);[Red]\\(#,##0\\)", SourceLinked = false });
+            //dataLabels.Append(new C.NumberingFormat() { FormatCode = "#,##0_);[Red]\\(#,##0\\)", SourceLinked = false });
 
             dataLabels.Append(new C.ShowLegendKey() { Val = false });
             dataLabels.Append(new C.ShowValue() { Val = true });
