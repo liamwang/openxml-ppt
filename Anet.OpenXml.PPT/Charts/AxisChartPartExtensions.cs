@@ -11,148 +11,9 @@ namespace Anet.OpenXml.PPT.Charts
 {
     public static class AxisChartPartExtensions
     {
-        ///// <summary>
-        ///// 修改条形图数据
-        ///// </summary>
-        ///// <param name="model">条形图数据</param>
-        //public static void ResetBarChartSeriesData(this ChartPart chartPart, List<ChartSeriesModel> data, IEnumerable<string> categories)
-        //{
-        //    // 图表不能超过6个系列（SchemeColorValues.Accent1~6）
-        //    if (data.Count > 16)
-        //    {
-        //        throw new Exception("图表不能超过6个系列！");
-        //    }
-
-        //    var barChart = chartPart.ChartSpace
-        //        .GetFirstChild<C.Chart>()
-        //        .GetFirstChild<PlotArea>()
-        //        .GetFirstChild<BarChart>();
-
-        //    // 移除所有系列
-        //    barChart.RemoveAllChildren<BarChartSeries>();
-
-        //    for (int i = 0; i < data.Count; i++)
-        //    {
-        //        var item = data[i];
-
-        //        var barChartSeries = new BarChartSeries();
-        //        barChartSeries.Append(new Index() { Val = (uint)i });
-        //        barChartSeries.Append(new Order() { Val = (uint)i });
-
-        //        if (!string.IsNullOrEmpty(item.Title))
-        //        {
-        //            barChartSeries.Append(new SeriesText(
-        //                new StringReference(
-        //                    // new Formula { Text = "" }
-        //                    new StringCache(
-        //                        new PointCount { Val = 1U },
-        //                        new StringPoint(new NumericValue { Text = item.Title }) { Index = 0U }
-        //                    )
-        //                )
-        //            ));
-        //        }
-
-        //        barChartSeries.Append(new ChartShapeProperties(
-        //            new SolidFill(new SchemeColor { Val = GetAccentColor(i) }),
-        //            new Outline(new NoFill()),
-        //            new EffectList()
-        //        ));
-
-        //        barChartSeries.Append(new InvertIfNegative { Val = false });
-
-        //        // 分类
-        //        if (categories != null && categories.Count() > 0)
-        //        {
-        //            barChartSeries.Append(new CategoryAxisData().ChangeData(categories));
-        //        }
-
-        //        // 数据
-        //        barChartSeries.Append(GenerateValues(item.Data, item.FormatCode));
-
-        //        barChart.Append(barChartSeries);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 修改拆线图数据
-        ///// </summary>
-        ///// <param name="model">条形图数据</param>
-        //public static void ResetLineChartSeriesData(this ChartPart chartPart, List<ChartSeriesModel> data, IEnumerable<string> categories)
-        //{
-        //    // 图表不能超过6个系列（SchemeColorValues.Accent1~6）
-        //    if (data.Count > 16)
-        //    {
-        //        throw new Exception("图表不能超过6个系列！");
-        //    }
-
-        //    var lineChart = chartPart.ChartSpace
-        //        .GetFirstChild<C.Chart>()
-        //        .GetFirstChild<PlotArea>()
-        //        .GetFirstChild<LineChart>();
-
-        //    // 移除所有系列
-        //    lineChart.RemoveAllChildren<LineChartSeries>();
-
-        //    for (int i = 0; i < data.Count; i++)
-        //    {
-        //        var item = data[i];
-
-        //        var chartSeries = new LineChartSeries();
-        //        chartSeries.Append(new Index() { Val = (uint)i + 2 });
-        //        chartSeries.Append(new Order() { Val = (uint)i + 2 });
-
-        //        if (!string.IsNullOrEmpty(item.Title))
-        //        {
-        //            chartSeries.Append(new SeriesText(
-        //                new StringReference(
-        //                    // new Formula { Text = "" }
-        //                    new StringCache(
-        //                        new PointCount { Val = 1U },
-        //                        new StringPoint(new NumericValue { Text = item.Title }) { Index = 0U }
-        //                    )
-        //                )
-        //            ));
-        //        }
-
-        //        var chartShapeProperties = new ChartShapeProperties();
-        //        var outline = new Outline() { Width = 28575, CapType = LineCapValues.Round };
-        //        outline.Append(new SolidFill(new SchemeColor() { Val = GetAccentColor(i) }));
-        //        outline.Append(new Round());
-        //        chartShapeProperties.Append(outline);
-        //        chartShapeProperties.Append(new EffectList());
-        //        chartSeries.Append(chartShapeProperties);
-
-        //        var marker = new Marker();
-        //        var chartShapeProperties2 = new ChartShapeProperties();
-        //        var solidFill2 = new SolidFill(new SchemeColor() { Val = GetAccentColor(i) });
-        //        var outline2 = new Outline() { Width = 9525 };
-        //        outline2.Append(new SolidFill(new SchemeColor() { Val = GetAccentColor(i) }));
-        //        chartShapeProperties2.Append(solidFill2);
-        //        chartShapeProperties2.Append(outline2);
-        //        chartShapeProperties2.Append(new EffectList());
-
-        //        marker.Append(new Symbol() { Val = C.MarkerStyleValues.Circle });
-        //        marker.Append(new Size() { Val = 5 });
-        //        marker.Append(chartShapeProperties2);
-        //        chartSeries.Append(marker);
-
-        //        // 分类
-        //        if (categories != null && categories.Count() > 0)
-        //        {
-        //            chartSeries.Append(new CategoryAxisData().ChangeData(categories));
-        //        }
-
-        //        // 数据
-        //        chartSeries.Append(GenerateValues(item.Data, item.FormatCode));
-
-        //        lineChart.Append(chartSeries);
-        //    }
-        //}
-
         /// <summary>
         /// 修改条形图数据
         /// </summary>
-        /// <param name="model">条形图数据</param>
         public static void ResetChartSeriesData(this ChartPart chartPart, List<ChartSeriesModel> data, IEnumerable<string> categories)
         {
             // 图表不能超过6个系列（SchemeColorValues.Accent1~6）
@@ -165,6 +26,8 @@ namespace Anet.OpenXml.PPT.Charts
             var barChart = plotArea.GetFirstChild<BarChart>();
             var lineChart = plotArea.GetFirstChild<LineChart>();
 
+            // 创建模式
+
             // 移除所有系列
             if (barChart != null)
                 barChart.RemoveAllChildren<BarChartSeries>();
@@ -174,12 +37,12 @@ namespace Anet.OpenXml.PPT.Charts
             for (int i = 0; i < data.Count; i++)
             {
                 var item = data[i];
-                if (item.ChartType == ChartType.BarChart)
+                if (barChart != null && item.ChartType == ChartType.BarChart)
                 {
                     var chartSeries = GenerateBarChartSeries(item, categories, i);
                     barChart.Append(chartSeries);
                 }
-                else if (item.ChartType == ChartType.LineChart)
+                else if (lineChart != null && item.ChartType == ChartType.LineChart)
                 {
                     var chartSeries = GenerateLineChartSeries(item, categories, i);
                     lineChart.Append(chartSeries);
@@ -208,7 +71,7 @@ namespace Anet.OpenXml.PPT.Charts
 
             var chartShapeProperties = new ChartShapeProperties();
             var outline = new Outline() { Width = 28575, CapType = LineCapValues.Round };
-            outline.Append(new SolidFill(new SchemeColor() { Val = GetAccentColor(index) }));
+            outline.Append(new SolidFill(new SchemeColor() { Val = ChartUtil.GetAccentColor(index) }));
             outline.Append(new Round());
             chartShapeProperties.Append(outline);
             chartShapeProperties.Append(new EffectList());
@@ -216,9 +79,9 @@ namespace Anet.OpenXml.PPT.Charts
 
             var marker = new Marker();
             var chartShapeProperties2 = new ChartShapeProperties();
-            var solidFill2 = new SolidFill(new SchemeColor() { Val = GetAccentColor(index) });
+            var solidFill2 = new SolidFill(new SchemeColor() { Val = ChartUtil.GetAccentColor(index) });
             var outline2 = new Outline() { Width = 9525 };
-            outline2.Append(new SolidFill(new SchemeColor() { Val = GetAccentColor(index) }));
+            outline2.Append(new SolidFill(new SchemeColor() { Val = ChartUtil.GetAccentColor(index) }));
             chartShapeProperties2.Append(solidFill2);
             chartShapeProperties2.Append(outline2);
             chartShapeProperties2.Append(new EffectList());
@@ -235,20 +98,23 @@ namespace Anet.OpenXml.PPT.Charts
             }
 
             // 数据
-            chartSeries.Append(GenerateValues(model.Data, model.FormatCode));
+            chartSeries.Append(ChartUtil.GenerateValues(model.Data, model.FormatCode));
+
+            var dataLables = GenerateDataLabels(chartSeries);
+            chartSeries.Append(dataLables);
 
             return chartSeries;
         }
 
         private static BarChartSeries GenerateBarChartSeries(ChartSeriesModel item, IEnumerable<string> categories, int index)
         {
-            var barChartSeries = new BarChartSeries();
-            barChartSeries.Append(new Index() { Val = (uint)index });
-            barChartSeries.Append(new Order() { Val = (uint)index });
+            var chartSeries = new BarChartSeries();
+            chartSeries.Append(new Index() { Val = (uint)index });
+            chartSeries.Append(new Order() { Val = (uint)index });
 
             if (!string.IsNullOrEmpty(item.Title))
             {
-                barChartSeries.Append(new SeriesText(
+                chartSeries.Append(new SeriesText(
                     new StringReference(
                         // new Formula { Text = "" }
                         new StringCache(
@@ -259,54 +125,44 @@ namespace Anet.OpenXml.PPT.Charts
                 ));
             }
 
-            barChartSeries.Append(new ChartShapeProperties(
-                new SolidFill(new SchemeColor { Val = GetAccentColor(index) }),
+            chartSeries.Append(new ChartShapeProperties(
+                new SolidFill(new SchemeColor { Val = ChartUtil.GetAccentColor(index) }),
                 new Outline(new NoFill()),
                 new EffectList()
             ));
 
-            barChartSeries.Append(new InvertIfNegative { Val = false });
+            chartSeries.Append(new InvertIfNegative { Val = false });
 
             // 分类
             if (categories != null && categories.Count() > 0)
             {
-                barChartSeries.Append(new CategoryAxisData().ChangeData(categories));
+                chartSeries.Append(new CategoryAxisData().ChangeData(categories));
             }
 
             // 数据
-            barChartSeries.Append(GenerateValues(item.Data, item.FormatCode));
+            chartSeries.Append(ChartUtil.GenerateValues(item.Data, item.FormatCode));
 
-            return barChartSeries;
+            var dataLables = GenerateDataLabels(chartSeries);
+            chartSeries.Append(dataLables);
+
+            return chartSeries;
         }
 
-        private static Values GenerateValues(double[] data, string formatCode = null)
+        private static DataLabels GenerateDataLabels(OpenXmlElement chartSeries)
         {
-            var values = new Values();
-            var numberReference = new NumberReference();
-            //numberReference.Append(new Formula { Text = "" });
+            var dataLabels = new C.DataLabels();
 
-            var numberingCache = new NumberingCache();
-            if (!string.IsNullOrEmpty(formatCode))
-            {
-                numberingCache.Append(new FormatCode { Text = formatCode });
-            }
-            numberingCache.Append(new PointCount { Val = (uint)data.Length });
-            for (int i = 0; i < data.Length; i++)
-            {
-                var numericPoint = new NumericPoint { Index = (uint)i };
-                numericPoint.Append(new NumericValue { Text = data[i].ToString() });
-                numberingCache.Append(numericPoint);
-            }
+            dataLabels.Append(new C.NumberingFormat() { FormatCode = "#,##0_);[Red]\\(#,##0\\)", SourceLinked = false });
 
-            numberReference.Append(numberingCache);
-            values.Append(numberReference);
+            dataLabels.Append(new C.ShowLegendKey() { Val = false });
+            dataLabels.Append(new C.ShowValue() { Val = true });
+            dataLabels.Append(new C.ShowCategoryName() { Val = false });
+            dataLabels.Append(new C.ShowSeriesName() { Val = false });
+            dataLabels.Append(new C.ShowPercent() { Val = false });
+            dataLabels.Append(new C.ShowBubbleSize() { Val = false });
+            dataLabels.Append(new C.ShowLeaderLines() { Val = false });
 
-            return values;
-        }
-
-        private static SchemeColorValues GetAccentColor(int index)
-        {
-            return (SchemeColorValues)Enum.Parse(typeof(SchemeColorValues), "Accent" + (index + 1));
+            return dataLabels;
         }
     }
 }
