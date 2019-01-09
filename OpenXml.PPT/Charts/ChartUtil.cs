@@ -2,7 +2,7 @@
 using DocumentFormat.OpenXml.Drawing.Charts;
 using System;
 
-namespace Anet.OpenXml.PPT.Charts
+namespace OpenXml.PPT.Charts
 {
     public class ChartUtil
     {

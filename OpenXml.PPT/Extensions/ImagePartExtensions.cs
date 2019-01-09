@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public static class ImagePartExtensions
     {

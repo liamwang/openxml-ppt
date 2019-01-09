@@ -4,7 +4,7 @@ using DocumentFormat.OpenXml.Presentation;
 using System.Collections.Generic;
 using D = DocumentFormat.OpenXml.Drawing;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public class TableUtil
     {

@@ -1,4 +1,4 @@
-﻿namespace Anet.OpenXml.PPT
+﻿namespace OpenXml.PPT
 {
     /// <summary>
     /// English Metric Units

@@ -1,11 +1,11 @@
-﻿using Anet.OpenXml.PPT.Defines;
+﻿using OpenXml.PPT.Defines;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
 using System;
 using System.IO;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public class PPT : IDisposable
     {

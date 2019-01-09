@@ -1,4 +1,4 @@
-﻿using Anet.OpenXml.PPT.Defines;
+﻿using OpenXml.PPT.Defines;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
@@ -8,7 +8,7 @@ using System.Linq;
 using D = DocumentFormat.OpenXml.Drawing;
 using P = DocumentFormat.OpenXml.Presentation;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public static class PresentationDocumentExtensions
     {

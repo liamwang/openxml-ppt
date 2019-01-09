@@ -7,7 +7,7 @@ using System.Linq;
 using C = DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml;
 
-namespace Anet.OpenXml.PPT.Charts
+namespace OpenXml.PPT.Charts
 {
     public static class AxisChartPartExtensions
     {

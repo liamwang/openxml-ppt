@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anet.OpenXml.PPT", "Anet.OpenXml.PPT\Anet.OpenXml.PPT.csproj", "{1EADED5A-2B42-4C55-8A76-B6A5EBFA61DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenXml.PPT", "OpenXml.PPT\OpenXml.PPT.csproj", "{1EADED5A-2B42-4C55-8A76-B6A5EBFA61DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{19F7203C-D849-4684-B5BF-746836E37A38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples", "Examples\Examples.csproj", "{19F7203C-D849-4684-B5BF-746836E37A38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

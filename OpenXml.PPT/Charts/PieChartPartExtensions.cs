@@ -6,7 +6,7 @@ using System.Linq;
 using A = DocumentFormat.OpenXml.Drawing;
 using C = DocumentFormat.OpenXml.Drawing.Charts;
 
-namespace Anet.OpenXml.PPT.Charts
+namespace OpenXml.PPT.Charts
 {
     public static class PieChartPartExtensions
     {

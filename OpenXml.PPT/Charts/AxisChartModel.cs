@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Anet.OpenXml.PPT.Charts
+namespace OpenXml.PPT.Charts
 {
     public class AxisChartModel
     {

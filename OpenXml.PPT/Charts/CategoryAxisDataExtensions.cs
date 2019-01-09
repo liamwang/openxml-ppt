@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Anet.OpenXml.PPT.Charts
+namespace OpenXml.PPT.Charts
 {
     public static class CategoryAxisDataExtensions
     {

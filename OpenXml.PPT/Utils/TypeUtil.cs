@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public static class TypeUtil
     {

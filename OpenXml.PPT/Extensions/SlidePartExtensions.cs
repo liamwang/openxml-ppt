@@ -7,7 +7,7 @@ using System.Linq;
 using D = DocumentFormat.OpenXml.Drawing;
 using A14 = DocumentFormat.OpenXml.Office2010.Drawing;
 
-namespace Anet.OpenXml.PPT
+namespace OpenXml.PPT
 {
     public static class SlidePartExtensions
     {

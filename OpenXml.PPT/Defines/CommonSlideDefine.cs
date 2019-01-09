@@ -1,6 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Presentation;
 
-namespace Anet.OpenXml.PPT.Defines
+namespace OpenXml.PPT.Defines
 {
     public class CommonSlideDefine
     {

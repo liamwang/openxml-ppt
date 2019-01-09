@@ -2,7 +2,7 @@
 using DocumentFormat.OpenXml.Presentation;
 using P = DocumentFormat.OpenXml.Presentation;
 
-namespace Anet.OpenXml.PPT.Defines
+namespace OpenXml.PPT.Defines
 {
     public class SlideMasterDefine
     {
